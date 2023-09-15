@@ -21,7 +21,7 @@ after that, you can use Jupyter Notebook or the command
 ```bash
 python3 ./run.py
 ```
-to populate tables with fake data it adds 2 Million posts and 1 seen posts.
+to populate tables with fake data it adds 2 Million posts and 3 Million seen posts.
 one note I like to add here is that I combined the voted and skipped tables into one table to use less disk and it is easier to query and name it voted_skipped.
 schema of the database is defined as 
 ```
@@ -64,14 +64,14 @@ WHERE ID NOT IN (
 ORDER BY create_date 
 LIMIT 20
 ```
-after running the below query we can get the following report 
-20 rows in set. Elapsed: 0.351 sec. Processed 4.00 million rows, 245.50 MB (11.40 million rows/s., 699.45 MB/s.)
-Peak memory usage: 18.92 MiB.
-as it shows it doesn't need a lot of memory and CPU to calculate the response and the disk gets used for saving the data as follows
+after running the below query we can get the following report <br />
+20 rows in set. Elapsed: 0.290 sec. Processed 6.00 million rows, 277.50 MB (20.70 million rows/s., 957.18 MB/s.) <br />
+Peak memory usage: 18.79 MiB. <br />
+as it shows it doesn't need a lot of memory and CPU to calculate the response and the disk gets used for saving the data as follows <br />
 ```
 ┌─table───────────────────┬─size───────┬────rows─┬─days─┬─avgDaySize─┐
 │ post                    │ 127.87 MiB │ 2000000 │    0 │ inf YiB    │
-│ voted_skipped           │ 7.22 MiB   │ 1000000 │    0 │ inf YiB    │
+│ voted_skipped           │ 7.22 MiB   │ 3000000 │    0 │ inf YiB    │
 ```
 so it shows that the Clickhouse is also disk efficient. <br />
 for this amount of load, this solution going to work perfectly, and doing all the other work is kind of over-engineering. <br />
