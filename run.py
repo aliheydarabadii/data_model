@@ -93,7 +93,8 @@ import random
 data=[]
 for x in range(1000000):
     data.append({"post_id":x,"user_Id":random.randint(1, 50),"action":random.randint(0, 1),"create_at":datetime.datetime.now()})
-
+    data.append({"post_id":x,"user_Id":random.randint(51, 100),"action":random.randint(0, 1),"create_at":datetime.datetime.now()})
+    data.append({"post_id":x,"user_Id":random.randint(100, 150),"action":random.randint(0, 1),"create_at":datetime.datetime.now()})
 
 # In[114]:
 
